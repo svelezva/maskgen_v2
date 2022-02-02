@@ -1,4 +1,6 @@
+from functools import cache
 import json
+import gdown
 import pandas as pd
 import streamlit as st
 import imageio
@@ -13,7 +15,15 @@ from detectron2.utils.logger import setup_logger
 from detectron2.evaluation.evaluator import DatasetEvaluator
 setup_logger()
 
+@st.cache
+def download_model_weights():
+    url = 'https://drive.google.com/uc?id=1Ws-cTAJ55ebfo6tA-TBr6k3IHs93Jzed'
+    output = 'detectron.RLE.pth'
+    gdown.download(url, output, quiet=False)
 
+download_model_weights()
+
+@st.cache
 def get_predictor():
     with open('val_RLE.json') as json_file:
         val_dict = json.load(json_file)
