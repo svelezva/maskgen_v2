@@ -1,4 +1,3 @@
-from functools import cache
 import json
 import gdown
 import pandas as pd
