@@ -15,7 +15,7 @@ from detectron2.utils.logger import setup_logger
 from detectron2.evaluation.evaluator import DatasetEvaluator
 setup_logger()
 
-@st.cache
+#@st.cache
 def download_model_weights():
     url = 'https://drive.google.com/uc?id=1Ws-cTAJ55ebfo6tA-TBr6k3IHs93Jzed'
     output = 'detectron.RLE.pth'
@@ -23,7 +23,7 @@ def download_model_weights():
 
 download_model_weights()
 
-@st.cache
+#@st.cache
 def get_predictor():
     with open('val_RLE.json') as json_file:
         val_dict = json.load(json_file)
